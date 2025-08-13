@@ -1,0 +1,9 @@
+# .gitignore file for the clean_prd_ecomm project
+infra-tf/.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+*.tfplan
+crash.log
+*.vscode/
+
