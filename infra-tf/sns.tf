@@ -18,8 +18,3 @@ resource "aws_sns_topic_subscription" "down_service1_sub" {
   endpoint  = "https://ec2.eu-central-1.api.aws"
 }
 
-variable "sns_topic_arn" {
-  description = "The arn of the sns topic subscription, created variable as the service is not created"
-  type = string
-  default = ""
-}

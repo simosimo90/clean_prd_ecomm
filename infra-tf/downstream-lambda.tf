@@ -4,7 +4,7 @@
 
 resource "aws_lambda_function" "downstream_lambda" {
   s3_bucket = "ttt-my-terraform-state"
-  s3_key = "downstream-services/publish-data.zip"
+  s3_key = var.py_files_var
 
   
   function_name    = "publish-data-function"

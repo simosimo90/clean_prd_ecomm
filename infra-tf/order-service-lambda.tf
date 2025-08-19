@@ -11,7 +11,7 @@ data "aws_caller_identity" "current" {}
 
 resource "aws_lambda_function" "order_services_lambda" {
   s3_bucket = "ttt-my-terraform-state"
-  s3_key = "services-backend/orders.zip"
+  s3_key = var.js_files_var
 
   function_name = "order-services-logic"
   role = aws_iam_role.lambda_exec_role.arn
@@ -23,6 +23,8 @@ resource "aws_lambda_function" "order_services_lambda" {
   Application = "ord-service-lambda"
 }
 }
+
+
 
 # Defining an execution role for order-services-lambda (mandatory for all Lamdas)
 
