@@ -29,6 +29,15 @@ jobs:
         with:
           node-version: "20.x"
 
+
+      # Configure AWS Credentials   
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4.3.1
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: eu-central-1
+
       - name: Zip order-service-lambda .js files
         run: |
             zip -r orders.zip orders/
@@ -57,17 +66,6 @@ jobs:
         run: |
             echo "py_files_var = "\downstream-services/publish-data-${{env.GIT_SHA}}.zip"" >> terraform.tfvars  
 
-          
-
-
-
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4.3.1
-        with:
-          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
-          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          aws-region: eu-central-1
 
       - name: Installing Terraform CLI
         uses: hashicorp/setup-terraform@v3
