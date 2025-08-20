@@ -44,7 +44,7 @@ jobs:
 
       - name: Create and Populate tfvars file with the order-service s3 key
         run: |
-            echo "js_files_var = "\backend-services/order-service-${{env.GIT_SHA}}.zip"" > terraform.tfvars
+            echo "js_files_var = \"backend-services/order-service-${{env.GIT_SHA}}.zip\"" > infra-tf/terraform.tfvars
             
 
 
@@ -63,7 +63,7 @@ jobs:
 
       - name: Create and populate the tfvars file with the publish-data s3 key
         run: |
-            echo "py_files_var = "\downstream-services/publish-data-${{env.GIT_SHA}}.zip"" >> terraform.tfvars  
+            echo "py_files_var = \"downstream-services/publish-data-${{env.GIT_SHA}}.zip\"" >> infra-tf/terraform.tfvars  
 
 
       - name: Installing Terraform CLI
@@ -83,9 +83,4 @@ jobs:
       - name: Terraform Apply 
         run: terraform apply "tfplan"
         working-directory: infra-tf
-
-
-    
-
-
 
