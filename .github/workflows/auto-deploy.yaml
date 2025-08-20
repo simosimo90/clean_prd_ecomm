@@ -74,15 +74,15 @@ jobs:
       # Deploying Terraform
       - name: Terraform Init
         run: terraform init
-        working-directory: ifra-tf
+        working-directory: infra-tf
       
       - name: Terraform Plan # passing the terraform.tfvrs file created with the bash script
         run: terraform plan -var-file="terraform.tfvars" -out="tfplan"
-        working-directory: ifra-tf
+        working-directory: infra-tf
 
       - name: Terraform Apply 
         run: terraform apply "tfplan"
-        working-directory: ifra-tf
+        working-directory: infra-tf
 
 
     
