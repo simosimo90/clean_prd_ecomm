@@ -1,10 +1,10 @@
 # Here I declare all the variables of my code
 
-variable "sns_topic_arn" {
+/* variable "sns_topic_arn" {
   description = "The arn of the sns topic subscription, created variable as the service is not created"
   type = string
   default = ""
-}
+} */
 
 
 

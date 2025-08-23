@@ -58,7 +58,7 @@ jobs:
 
       - name: Zip downstream-lambda .py file
         run: |
-            zip downstream-lambda.zip downstream-lambda/ 
+            zip -r downstream-lambda.zip downstream-lambda/ 
             aws s3 cp downstream-lambda.zip s3://ttt-my-terraform-state/downstream-services/publish-data-${{env.GIT_SHA}}.zip
 
       - name: Create and populate the tfvars file with the publish-data s3 key

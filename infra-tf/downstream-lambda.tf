@@ -62,5 +62,10 @@ data "aws_iam_policy_document" "stream_and_sns_permissions" {
       "dynamodb:ListStreams",      # For reading from the stream
       "sns:Publish"                # For publishing to SNS
     ]
+
+    resources = [
+      aws_dynamodb_table.products_dynamodb.stream_arn,
+      aws_sns_topic.order_services_topic.arn
+      ]
   }
 }

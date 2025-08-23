@@ -74,7 +74,9 @@ data "aws_iam_policy_document" "lambda1-policy" {
       "dynamodb:GetRecords",
       "dynamodb:GetShardIterator",
       "dynamodb:DescribeStream",
-      "dynamodb:ListStreams"
+      "dynamodb:ListStreams",
+      #Permission for let Lambda receive messages from SQS
+      "sqs:ReceiveMessage"
     ]
 
     resources = [ 
