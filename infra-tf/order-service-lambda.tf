@@ -76,7 +76,9 @@ data "aws_iam_policy_document" "lambda1-policy" {
       "dynamodb:DescribeStream",
       "dynamodb:ListStreams",
       #Permission for let Lambda receive messages from SQS
-      "sqs:ReceiveMessage"
+      "sqs:ReceiveMessage",
+      "sqs:DeleteMessage",
+      "sqs:GetQueueAttributes"
     ]
 
     resources = [ 
@@ -84,7 +86,8 @@ data "aws_iam_policy_document" "lambda1-policy" {
       "arn:aws:dynamodb:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:table/${aws_dynamodb_table.products_dynamodb.name}/*", 
       # ARN of the stream, which is a different resource
       aws_dynamodb_table.products_dynamodb.stream_arn,
-      aws_sns_topic.order_services_topic.arn
+      aws_sns_topic.order_services_topic.arn,
+      aws_sqs_queue.sqs_queue.arn
       ]
   }
 }
