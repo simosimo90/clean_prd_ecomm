@@ -10,12 +10,14 @@ resource "aws_apigatewayv2_integration" "integration_api" {
   api_id              = aws_apigatewayv2_api.api_ord_services.id
   credentials_arn     = aws_iam_role.api_int_role.arn
   description         = "Api gateway integration with SQS"
-  integration_type    = "AWS"
+  integration_type    = "AWS_PROXY"
+  integration_subtype = "SQS-SendMessage"
   integration_method  = "POST"
   integration_uri     = "arn:aws:apigateway:${var.aws_region}:sqs:path/${aws_sqs_queue.sqs_queue.name}"
 
-  request_templates = {
-    "application/json" = "Action=SendMessage&MessageBody=$util.urlEncode($input.body)&QueueUrl=${aws_sqs_queue.sqs_queue.url}"
+  request_parameters = {
+    "QueueUrl" = "${aws_sqs_queue.sqs_queue}",
+    "MessageBody" = "$request.body", 
   }
 }
 
