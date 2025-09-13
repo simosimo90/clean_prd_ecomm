@@ -24,7 +24,7 @@ resource "aws_apigatewayv2_integration" "integration_api" {
 resource "aws_apigatewayv2_route" "routing" {
   api_id    = aws_apigatewayv2_api.api_ord_services.id
   route_key = "POST /orders"
-  target = "integration/${aws_apigatewayv2_integration.integration_api.id}"
+  target = "integrations/${aws_apigatewayv2_integration.integration_api.id}"
 
 }
 
