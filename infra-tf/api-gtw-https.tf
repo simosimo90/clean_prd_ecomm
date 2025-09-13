@@ -12,7 +12,8 @@ resource "aws_apigatewayv2_integration" "integration_api" {
   description         = "Api gateway integration with SQS"
   integration_type    = "AWS_PROXY"
   integration_subtype = "SQS-SendMessage"
-  integration_method  = "POST"
+  # integration_method  = "POST" --> this was causing the error as it's redundant info, the method 
+  # is already provided by the integration_subtype
 
   request_parameters = {
     "QueueUrl" = "${aws_sqs_queue.sqs_queue.url}",
