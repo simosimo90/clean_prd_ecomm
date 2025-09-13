@@ -15,6 +15,6 @@ resource "aws_sns_topic" "order_services_topic" {
 resource "aws_sns_topic_subscription" "down_service1_sub" {
   topic_arn = aws_sns_topic.order_services_topic.arn
   protocol  = "https"
-  endpoint  = "https://ec2.eu-central-1.api.aws"
+  endpoint  = "www.example.com"    # the internal endpoint in case of real services subscribing would have been ** "https://ec2.eu-central-1.api.aws" **
 }
 

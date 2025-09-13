@@ -26,3 +26,10 @@ variable "py_files_var" {
 }
 
 
+variable "aws_region" {
+  type = string
+  default = "eu-central-1"
+  
+}
+
+
