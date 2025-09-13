@@ -16,7 +16,7 @@ resource "aws_apigatewayv2_integration" "integration_api" {
   integration_uri     = "arn:aws:apigateway:${var.aws_region}:sqs:path/${aws_sqs_queue.sqs_queue.name}"
 
   request_parameters = {
-    "QueueUrl" = "${aws_sqs_queue.sqs_queue}",
+    "QueueUrl" = "${aws_sqs_queue.sqs_queue.url}",
     "MessageBody" = "$request.body", 
   }
 }
